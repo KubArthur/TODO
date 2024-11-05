@@ -1,0 +1,49 @@
+/* src/components/Dashboard.css */
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.task-list {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px; /* Limiter la largeur pour un meilleur rendu */
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between; /* Espace entre les éléments */
+  align-items: center;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.task-item:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.task-title {
+  font-weight: bold;
+}
+
+.task-description {
+  margin: 0 10px;
+}
+
+.task-status {
+  font-style: italic;
+  color: #666;
+}
+
+.add-task-button {
+  margin-bottom: 20px;
+}

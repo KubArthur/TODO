@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:13
+    container_name: todo_postgres
+    environment:
+      POSTGRES_USER: supabase_user
+      POSTGRES_PASSWORD: supabase_password
+      POSTGRES_DB: supabase_db
+    ports:
+      - "5433:5433"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: todo_backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/supabase_db
+      SPRING_DATASOURCE_USERNAME: supabase_user
+      SPRING_DATASOURCE_PASSWORD: supabase_password
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - backend_network
+
+volumes:
+  postgres_data:
+
+networks:
+  backend_network:
